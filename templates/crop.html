@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head%}
+<title>Crop Recommendation System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/crop.css') }}">
+{% endblock%}
+
+{% block body%}
+
+<h1 class="my" style="text-align: center;">Crop Recommendation System</h1>
+
+<div class="card-container">
+    <div class="card-section">
+        <div class="card">
+            <img src="{{url_for('static',filename='img/'+crop['name']+'.jpg')}}">
+            <h2>OUR RECOMMENDATION {{crop['name']}}</h2>
+        </div>
+        <div class="card">
+            <img src="{{url_for('static',filename='img/'+crop['name']+'fert.png')}}">
+            <h2>Fertilizer Recommended {{fert[crop['name']]}}</h2>
+        </div>
+        <div class="card">
+            <img src="{{url_for('static',filename='img/'+crop['name']+'npk.png')}}">
+            <h2>
+                NPK Chart
+                <br>
+                <br>Rainfall: {{crop['rain']}} mm
+                <br>Temperature: {{ crop['temperature']|round(2) }} °C
+                <br>Humidity: {{crop['humidity']}}%
+            </h2>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div style="display: flex;justify-content: center;">
+    <a href="javascript:history.back()">
+        <button class="btn btn-primary">Change Values</button>
+    </a>
+    <a href="/">
+        <button class="btn btn-primary">Make Another Prediction</button>
+    </a>
+    </form>
+</div>
+
+{% endblock%}
